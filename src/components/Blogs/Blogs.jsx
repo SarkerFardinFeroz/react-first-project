@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Blog from "../Blog/Blog";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -10,10 +11,20 @@ const Blogs = () => {
     };
     asyncFunc();
   }, []);
+
   return (
-  <div className="w-2/3">
-    <h1 className="text-4xl">Blogs: {blogs.length}</h1>
-  </div>);
+    <div className="w-2/3">
+      <h1 className="text-4xl">Blogs: {blogs.length}</h1>
+      <div>
+        {blogs.map((blog) => (
+          <Blog 
+            key={blog.id} 
+            blog={blog} 
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Blogs;
